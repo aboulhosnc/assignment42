@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,8 +27,18 @@ public class MainActivity extends AppCompatActivity {
     {
         if(v.getId() == R.id.Bfind_match)
         {
+            EditText a = (EditText)findViewById(R.id.TFmatch);
+
+            String str = a.getText().toString();
+
             Intent i = new Intent(MainActivity.this, Results_Screen.class);
+
+            i.putExtra("UserWordCheck", str);
             startActivity(i);
         }
+
+
+
+
     }
 }

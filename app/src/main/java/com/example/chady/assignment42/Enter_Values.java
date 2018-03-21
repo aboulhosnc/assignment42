@@ -25,8 +25,8 @@ public class Enter_Values extends Activity {
     {
         if(v.getId() == R.id.Bwordsubmit)
         {
-            Intent j = new Intent(Enter_Values.this, MainActivity.class);
-            startActivity(j);
+            //Intent j = new Intent(Enter_Values.this, MainActivity.class);
+            //startActivity(j);
         }
     }
 
