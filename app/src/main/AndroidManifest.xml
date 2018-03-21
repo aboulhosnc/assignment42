@@ -16,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Enter_Values"></activity>
+        <activity android:name=".Results_Screen"></activity>
     </application>
 
 </manifest>
