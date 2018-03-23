@@ -7,6 +7,13 @@
     <TextView
         android:id="@+id/TVmatchresults"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="43dp"
         android:text="@string/emptyString" />
+
+    <Button
+        android:id="@+id/BHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onHomeClick"
+        android:text="Home" />
 </LinearLayout>
