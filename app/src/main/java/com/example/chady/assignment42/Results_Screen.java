@@ -18,7 +18,7 @@ public class Results_Screen extends Activity {
 
         String wordMatch =getIntent().getStringExtra("UserWordCheck");
 
-        TextView tv = (TextView)findViewById(R.id.TVmatchresults);
+        TextView tv = (TextView)findViewById(R.id.TFmatch);
         tv.setText(wordMatch);
 
 

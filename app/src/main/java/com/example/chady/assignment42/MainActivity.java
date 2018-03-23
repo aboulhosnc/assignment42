@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 // button to get to results screen
-    public void onButtonClick(View v)
+    public void onFindMatchClick(View v)
     {
         if(v.getId() == R.id.Bwordmatch)
         {
