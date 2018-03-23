@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
+// button to get to enter values screen
     public void onEnterValueClick(View v)
     {
        if(v.getId() == R.id.Benter_values)
@@ -23,19 +23,21 @@ public class MainActivity extends AppCompatActivity {
        }
     }
 
-    public void onFindClick (View v)
+// button to get to results screen
+    public void onButtonClick(View v)
     {
-        if(v.getId() == R.id.Bfind_match)
+        if(v.getId() == R.id.Bwordmatch)
         {
             EditText a = (EditText)findViewById(R.id.TFmatch);
-
             String str = a.getText().toString();
 
+            //adds word in text field to results  screen
             Intent i = new Intent(MainActivity.this, Results_Screen.class);
-
             i.putExtra("UserWordCheck", str);
             startActivity(i);
         }
+
+
 
 
 

@@ -11,7 +11,7 @@
         android:text="Enter  word" />
 
     <EditText
-        android:id="@+id/Tuserword"
+        android:id="@+id/TFuserWord"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -24,17 +24,17 @@
         android:text="Enter synonym / antonym" />
 
     <EditText
-        android:id="@+id/Tuserpair"
+        android:id="@+id/TFwordMatch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/Bwordsubmit"
+        android:id="@+id/BsubmitWordPair"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onSubmitCLick"
+        android:onClick="onEnterValueClick"
         android:text="Submit" />
 
 </LinearLayout>

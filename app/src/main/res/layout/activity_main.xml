@@ -20,7 +20,7 @@
         android:id="@+id/Benter_values"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onEnterValueClick"
+        android:onClick="onButtonClick"
         android:text="Enter Values" />
 
     <EditText
@@ -31,10 +31,10 @@
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/Bfind_match"
+        android:id="@+id/Bwordmatch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onFindClick"
+        android:onClick="onFindMatchClick"
         android:text="Find Synonym/ Antonym" />
 
 </LinearLayout>
