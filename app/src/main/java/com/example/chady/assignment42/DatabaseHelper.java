@@ -21,26 +21,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     SQLiteDatabase db;
 
-    private static final String TABLE_CREATE = "create table antonymTable (id integer primary key not null auto_increment , " +
+    private static final String TABLE_CREATE = "create table antonymTable (id integer primary key not null  , " +
             "userWord text not null , userAntonym text not null);";
 
+    //constructor
     public DatabaseHelper(Context context)
     {
         super(context ,DATABASE_NAME , null, DATABASE_VERSION );
     }
 
     @Override
+
+    //creates database
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_CREATE);
         this.db = db;
 
     }
 
+    // method to insert user word and antonym to database
+
     public void insertAntonym(AntonymList a)
+
     {
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+        String query ="select * from " + TABLE_NAME;
+        Cursor cursor = db.rawQuery(query,null);
+        int count = cursor.getCount();
 
+        values.put(COLUMN_ID, count);
         values.put(COLUMN_USER_WORD, a.getUserWord());
         values.put(COLUMN_USER_ANTONYM, a.getUserAntonym());
 
@@ -55,27 +65,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query ="select * from " + TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String userDatabase;
+        String antonymDatabase;
 
-        if(cursor.moveToFirst())
-        {
-            do{
-                userDatabase = cursor.getString(0);
-                if(userDatabase.equals(userWord))
-                {
-
-                }
-            }
-            while{}
-        }
-    }
-
-    public String findAntonym(String userWord )
-    {
-        db = this.getReadableDatabase();
-        String query = "select userWord, userAntonym from "+ TABLE_NAME;
-        Cursor cursor = db.rawQuery(query, null);
-        String userDatabase, antonymDatabase;
-        antonymDatabase = "not found";
+        // default result if no pair is there
+        String result = userWord + "antonym not Found";
 
         if(cursor.moveToFirst())
         {
@@ -83,16 +76,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 userDatabase = cursor.getString(0);
                 antonymDatabase = cursor.getString(1);
 
-                // if the userWord entered matches userWord in the database
-                // move
                 if(userDatabase.equals(userWord))
                 {
 
+                    result = "The word you input was " + userWord
+                            + "\n The antonym is " + cursor.getString(1);
+                    break;
                 }
-            }while (cursor.moveToNext());
+            }while(cursor.moveToNext());
+
         }
-        return antonymDatabase;
+        return result;
     }
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
