@@ -1,6 +1,8 @@
 package com.example.chady.assignment42;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -34,8 +36,64 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public void insertAntonym(AntonymList c)
+    {
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN_USER_WORD, c.getUserWord());
+        values.put(COLUMN_USER_ANTONYM, c.getUserAntonym());
+
+        db.insert(TABLE_NAME, null, values);
+    }
+
+
+    public String searchUserWord(String userWord )
+    {
+        db = this.getReadableDatabase();
+        String query ="select userWord from " + TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String userDatabase;
+
+        if(cursor.moveToFirst())
+        {
+            do{
+                userDatabase = cursor.getString(0);
+                if(userDatabase.equals(userWord))
+                {
+
+                }
+            }
+            while{}
+        }
+    }
+
+    public String findAntonym(String userWord )
+    {
+        db = this.getReadableDatabase();
+        String query = "select userWord, userAntonym from "+ TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
+        String userDatabase, antonymDatabase;
+        antonymDatabase = "not found";
+
+        if(cursor.moveToFirst())
+        {
+            do{
+                userDatabase = cursor.getString(0);
+
+                // if the userWord entered matches userWord in the database
+                // move
+                if(userDatabase.equals(userWord))
+                {
+                    antonymDatabase = cursor.getString(1);
+                }
+            }while (cursor.moveToNext());
+        }
+        return antonymDatabase;
+    }
+
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         String query = "DROP TABLE IF EXISTS " +TABLE_NAME;
         db.execSQL(query);
         this.onCreate(db);

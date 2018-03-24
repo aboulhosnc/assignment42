@@ -8,6 +8,8 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
+    DatabaseHelper helper = new DatabaseHelper(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,14 +29,40 @@ public class MainActivity extends AppCompatActivity {
     {
         if(v.getId() == R.id.Bfind_match)
         {
+            // word in id  plain text field
             EditText a = (EditText)findViewById(R.id.TFmatch);
+            String userWord  = a.getText().toString();
 
-            String str = a.getText().toString();
+            // pulls word from database
+            String userWordDatabase = helper.searchUserWord(userWord);
 
-            Intent i = new Intent(MainActivity.this, Results_Screen.class);
+            // pulls antonym from
 
-            i.putExtra("UserWordCheck", str);
-            startActivity(i);
+            if(userWord.equals(userWordDatabase))
+            {
+
+                String userAntonymDatabase = helper.findAntonym(userWord);
+
+                Intent i = new Intent(MainActivity.this, Results_Screen.class);
+
+                i.putExtra("UserWordCheck", userAntonymDatabase);
+                startActivity(i);
+            }
+
+            // if  word the user enters is not on the list then
+            // on the results page display a result not found
+            else
+            {
+
+                String wordNotFound = "Word Not Found!";
+                Intent i = new Intent(MainActivity.this, Results_Screen.class);
+
+                i.putExtra("UserWordCheck", wordNotFound);
+                startActivity(i);
+
+            }
+
+
         }
 
 

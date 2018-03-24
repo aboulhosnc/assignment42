@@ -12,6 +12,9 @@ import android.widget.Toast;
  */
 
 public class Enter_Values extends Activity {
+
+    DatabaseHelper helper = new DatabaseHelper(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,17 @@ public class Enter_Values extends Activity {
             {
                 Toast wordNotFound = Toast.makeText(Enter_Values.this, "The user word and the antonym do not match !" , Toast.LENGTH_SHORT);
                 wordNotFound.show();
+            }
+            else
+            {
+                //insert details into database
+                AntonymList c = new AntonymList();
+
+                c.setUserWord(userWordstr);
+                c.setUserAntonym(userWordMatchstr);
+
+                helper.insertAntonym(c);
+
             }
 
         }
