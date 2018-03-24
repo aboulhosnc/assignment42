@@ -41,21 +41,33 @@ public class Enter_Values extends Activity {
             String userWordstr = userWord.getText().toString();
             String userWordMatchstr = userWordMatch.getText().toString();
 
-            //checks if two words are a match
-            if(!userWordstr.equals(userWordMatchstr))
+            //checks if user entered anything into user word field
+            if(userWordstr.length() ==0)
             {
-                Toast wordNotFound = Toast.makeText(Enter_Values.this, "The user word and the antonym do not match !" , Toast.LENGTH_SHORT);
-                wordNotFound.show();
+                Toast userWordOriginal = Toast.makeText(Enter_Values.this, "Original word not entered into field!" , Toast.LENGTH_SHORT);
+                userWordOriginal.show();
+            }
+            //checks if user entered in any word into antonym word field
+            else if(userWordMatchstr.length() == 0)
+            {
+                Toast userAntonym = Toast.makeText(Enter_Values.this, "Antonym not entered into field !" , Toast.LENGTH_SHORT);
+                userAntonym.show();
             }
             else
             {
                 //insert details into database
-                AntonymList c = new AntonymList();
+                AntonymList a = new AntonymList();
 
-                c.setUserWord(userWordstr);
-                c.setUserAntonym(userWordMatchstr);
+                a.setUserWord(userWordstr);
+                a.setUserAntonym(userWordMatchstr);
 
-                helper.insertAntonym(c);
+                // user inserts word pair into database
+                helper.insertAntonym(a);
+
+
+                // button goes back to main menu
+                Intent i = new Intent( Enter_Values.this, MainActivity.class);
+                startActivity(i);
 
             }
 

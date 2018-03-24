@@ -6,7 +6,8 @@ package com.example.chady.assignment42;
 
 public class AntonymList {
     //int id;
-    String  userWord, userAntonym, userSynonym;
+    String  userWord, userAntonym;
+    //String userSynonym
 
     /*
     From Video not needed
@@ -47,7 +48,9 @@ public class AntonymList {
         return this.userAntonym;
     }
 
+/*
 
+not being used
     // methods for setting and getting Synonym
 
     public void setUserSynonym(String userSynonym)
@@ -59,6 +62,7 @@ public class AntonymList {
     {
         return  this.userSynonym;
     }
+    */
 
 
 }

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,18 +35,18 @@ public class MainActivity extends AppCompatActivity {
             String userWord  = a.getText().toString();
 
             // pulls word from database
-            String userWordDatabase = helper.searchUserWord(userWord);
+            //String userWordDatabase = helper.searchUserWord(userWord);
 
-            // pulls antonym from
 
-            if(userWord.equals(userWordDatabase))
+
+            if(userWord.length() >= 1)
             {
 
-                String userAntonymDatabase = helper.findAntonym(userWord);
+                String userWordResultDatabase = helper.searchUserWord(userWord);
 
                 Intent i = new Intent(MainActivity.this, Results_Screen.class);
 
-                i.putExtra("UserWordCheck", userAntonymDatabase);
+                i.putExtra("UserWordCheck", userWordResultDatabase);
                 startActivity(i);
             }
 
@@ -54,12 +55,8 @@ public class MainActivity extends AppCompatActivity {
             else
             {
 
-                String wordNotFound = "Word Not Found!";
-                Intent i = new Intent(MainActivity.this, Results_Screen.class);
-
-                i.putExtra("UserWordCheck", wordNotFound);
-                startActivity(i);
-
+                Toast wordNotFound = Toast.makeText(MainActivity.this, "Need to enter  text !" , Toast.LENGTH_SHORT);
+                wordNotFound.show();
             }
 
 
