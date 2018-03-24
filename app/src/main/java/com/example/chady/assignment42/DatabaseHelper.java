@@ -62,13 +62,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public String searchUserWord(String userWord )
     {
         db = this.getReadableDatabase();
-        String query ="select * from " + TABLE_NAME;
+        String query ="select userWord, userAntonym from  " + TABLE_NAME;
         Cursor cursor = db.rawQuery(query, null);
         String userDatabase;
         String antonymDatabase;
 
         // default result if no pair is there
-        String result = userWord + "antonym not Found";
+        String result = userWord + " antonym not Found";
 
         if(cursor.moveToFirst())
         {
