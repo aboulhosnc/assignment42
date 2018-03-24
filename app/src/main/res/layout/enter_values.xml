@@ -8,7 +8,9 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter  word" />
+        android:text="Enter  word"
+        android:textAlignment="textStart"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/TFuserWord"
@@ -21,7 +23,9 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter synonym / antonym" />
+        android:text="Enter Antonym"
+        android:textAlignment="textStart"
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/TFuserWordMatch"

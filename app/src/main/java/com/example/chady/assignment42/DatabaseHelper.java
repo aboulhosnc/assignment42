@@ -80,7 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 {
 
                     result = "The word you input was " + userWord
-                            + "\n The antonym is " + cursor.getString(1);
+                            + "\n \n The antonym is " + cursor.getString(1);
                     break;
                 }
             }while(cursor.moveToNext());
